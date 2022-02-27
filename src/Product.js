@@ -23,7 +23,7 @@ function Product({ id, title, image, price, rating, specification, detail }) {
   return (
     <div className="product">
       <div className="product__info">
-        <Link to="/ItemDetail">
+        <Link to={`/ItemDetail/${title}/${price}/${rating}`} style={{ textDecoration: 'none'}}>
           <p>{title}</p>
         </Link>
         <p className="product__price">
