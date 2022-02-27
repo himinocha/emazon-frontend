@@ -7,10 +7,12 @@ import {Link} from "react-router-dom"
 function Header() {
   return (
     <div className='header'>
-        <img 
-        className='header__logo'
-        src="https://github.com/yikevding/emazon/blob/main/logo.png?raw=true"
-        />
+        <Link to='/'>
+            <img 
+            className='header__logo'
+            src="https://github.com/yikevding/emazon/blob/main/logo.png?raw=true"
+            />
+        </Link>
 
         <div className='header__search'>
             <input className='header__searchInput'
