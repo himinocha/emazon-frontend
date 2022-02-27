@@ -1,8 +1,24 @@
 import React from "react";
 import "./Product.css";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useStateValue } from './StateProvider';
 
 function Product({ id, title, image, price, rating, specification, detail }) {
+
+  const [{ basket }, dispatch] = useStateValue();
+
+  const addToWishList = () => {
+    dispatch({
+      type: 'ADD_TO_WISHLIST',
+      item: {
+        title: title,
+        image: image,
+        price: price,
+        rating: rating
+      }
+    });
+
+  };
  
   return (
     <div className="product">
@@ -25,7 +41,7 @@ function Product({ id, title, image, price, rating, specification, detail }) {
 
       <img src={image} alt="" />
 
-      <button>Add to Basket</button>
+      <button onClick = {addToWishList} >Add to Wish list</button>
     </div>
   );
 }
