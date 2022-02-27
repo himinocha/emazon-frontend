@@ -4,6 +4,7 @@ import Header from './Header';
 import Home from "./Home";
 import Login from "./Login"
 import CreateAccount from "./CreateAccount"
+import ItemDetail from "./ItemDetail"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 function App() {
@@ -12,8 +13,12 @@ function App() {
     <div className="app">
       <Router>
       <Switch>
-        <Route path="/login">
-          <Login />
+        <Route path="/ItemDetail">
+          <Header/>
+          <ItemDetail/>
+        </Route>
+        <Route path="/Login">
+          <Login/>
         </Route>
         <Route path="/CreateAccount">
           <CreateAccount/>

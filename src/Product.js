@@ -1,12 +1,15 @@
 import React from "react";
 import "./Product.css";
+import {Link} from "react-router-dom"
 
-function Product({ id, title, image, price, rating }) {
+function Product({ id, title, image, price, rating, specification, detail }) {
  
   return (
     <div className="product">
       <div className="product__info">
-        <p>{title}</p>
+        <Link to="/ItemDetail">
+          <p>{title}</p>
+        </Link>
         <p className="product__price">
           <small>$</small>
           <strong>{price}</strong>
