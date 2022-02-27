@@ -4,7 +4,8 @@ import {useParams} from "react-router-dom"
 
 function ItemDetail(){
 
-    let {id} = useParams();
+    let {title, price, rating} = useParams();
+    console.log(rating, typeof(rating));
     return (
         <div className='item_detail_container'>
             <div>
@@ -16,11 +17,11 @@ function ItemDetail(){
 
                     <div className='item_detail_info'>
                         <div className='item_detail_title'>
-                            Classical Comfortable Grey Sofa
+                            {title}
                         </div>
 
                         <div className='item_detail_rating'>
-                            {Array(5)
+                            {Array(parseInt(rating))
                             .fill()
                             .map((_, i) => (
                             <p>⭐️</p>
@@ -29,12 +30,12 @@ function ItemDetail(){
 
                         <p className='item_detail_price'>
                             Price: <strong>$</strong>
-                            <strong>1399.99</strong>
+                            <strong>{price}</strong>
                         </p>
 
                         <div className='item_detail_description'>
                             <h4>Description</h4>
-                            This is a very comfortable sofa.
+                            Enter item description here.
                         </div>
 
                         <div className='item_detail_specification'>

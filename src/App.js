@@ -13,7 +13,7 @@ function App() {
     <div className="app">
       <Router>
       <Switch>
-        <Route path="/ItemDetail">
+        <Route path="/ItemDetail/:title/:price/:rating">
           <Header/>
           <ItemDetail/>
         </Route>
