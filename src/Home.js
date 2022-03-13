@@ -16,7 +16,7 @@ function Home() {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    fetch("http://emazon-backend.herokuapp.com/api/products")
+    fetch("https://emazon-backend.herokuapp.com/api/products")
       .then((response) => response.json())
       .then((responseJson) => {
         setProducts(responseJson.data);
@@ -24,7 +24,7 @@ function Home() {
   }, []);
   
   let showCard = (id) => {
-    fetch(`http://emazon-backend.herokuapp.com/api/products/${id}`)
+    fetch(`https://emazon-backend.herokuapp.com/api/products/${id}`)
       .then((response) => response.json())
       .then((responseJson) => {
         setProduct(responseJson.data);
