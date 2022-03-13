@@ -19,11 +19,24 @@ function Product({ id, title, image, price, rating, specification, detail }) {
     });
 
   };
+  const viewCurrentItem= () => {
+    dispatch({
+      type: 'VIEW_PRODUCT_DETAILS',
+      item: {
+        title: title,
+        image: image,
+        price: price,
+        rating: rating
+      }
+    });
+  };
+
+
  
   return (
     <div className="product">
       <div className="product__info">
-        <Link to={`/ItemDetail/${title}/${price}/${rating}`} style={{ textDecoration: 'none'}}>
+        <Link to={`/ItemDetail/${title}/${price}/${rating}`} onClick={viewCurrentItem} style={{ textDecoration: 'none'}}>
           <p>{title}</p>
         </Link>
         <p className="product__price">

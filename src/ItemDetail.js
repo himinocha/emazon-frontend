@@ -1,27 +1,39 @@
 import React from 'react'
 import "./ItemDetail.css"
 import {useParams} from "react-router-dom"
+import { useStateValue } from './StateProvider';
 
 function ItemDetail(){
 
     let {title, price, rating} = useParams();
 
-    return (
-        <div className='item_detail_container'>
-            <div>
-                <div className='item_detail'>
-                    <img
+    const [{ currentProduct }] = useStateValue();
+
+    console.log("currentProduct", currentProduct);
+    
+    
+    const renderContent = () => {
+        if (currentProduct.title == null) {
+          return (
+            <h2 >Return to home page to view items</h2>
+          );     
+        }
+        else {
+          return (
+    
+            <>
+                <img
                         className='item_detail_image'
-                        src='https://github.com/yikevding/emazon/blob/main/image/sofa.jpeg?raw=true'
+                        src={currentProduct.image}
                     />
 
                     <div className='item_detail_info'>
                         <div className='item_detail_title'>
-                            {title}
+                            {currentProduct.title}
                         </div>
 
                         <div className='item_detail_rating'>
-                            {Array(parseInt(rating))
+                            {Array(parseInt(currentProduct.rating))
                             .fill()
                             .map((_, i) => (
                             <p>⭐️</p>
@@ -30,12 +42,12 @@ function ItemDetail(){
 
                         <p className='item_detail_price'>
                             Price: <strong>$</strong>
-                            <strong>{price}</strong>
+                            <strong>{currentProduct.price}</strong>
                         </p>
 
                         <div className='item_detail_description'>
                             <h4>Description</h4>
-                            This is a very comfortable sofa.
+                            Enter item description here.
                         </div>
 
                         <div className='item_detail_specification'>
@@ -49,6 +61,18 @@ function ItemDetail(){
                             Add to Basket
                         </button>
                     </div>
+            </>
+          );
+        }
+      }
+
+
+    return (
+        <div className='item_detail_container'>
+            <div>
+                <div className='item_detail'>
+                    {renderContent()}
+                    
                 </div>
             </div>
         </div>
