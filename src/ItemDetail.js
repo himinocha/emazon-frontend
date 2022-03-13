@@ -5,7 +5,6 @@ import {useParams} from "react-router-dom"
 function ItemDetail(){
 
     let {title, price, rating} = useParams();
-    console.log(rating, typeof(rating));
     return (
         <div className='item_detail_container'>
             <div>
