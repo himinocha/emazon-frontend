@@ -6,6 +6,7 @@ import CreateAccount from "./CreateAccount"
 import ItemDetail from "./ItemDetail"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Wishlist from './Wishlist';
+import EditProfile from './EditProfile';
 
 function App() {
   return (
@@ -19,6 +20,10 @@ function App() {
         </Route>
         <Route path="/Login">
           <Login/>
+        </Route>
+        <Route path="/EditProfile">
+          <Header/>
+          <EditProfile/>
         </Route>
         <Route path="/wishlist">
           <Header/>
