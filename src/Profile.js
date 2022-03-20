@@ -72,12 +72,12 @@ function Profile(){
                 <div className='right_side'>
 
                     <div className='row_one'>
-                        <Product
+                        {/* <Product
                             title="Classical Comfortable Grey Sofa"
                             price={1399.99}
                             rating={5}
                             image="https://github.com/yikevding/emazon/blob/main/image/sofa.jpeg?raw=true"
-                        />
+                        /> */}
                     </div>
                 </div>
 
