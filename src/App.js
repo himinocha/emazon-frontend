@@ -7,6 +7,7 @@ import ItemDetail from "./ItemDetail"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Wishlist from './Wishlist';
 import EditProfile from './EditProfile';
+import Profile from './Profile'
 
 function App() {
   return (
@@ -24,6 +25,10 @@ function App() {
         <Route path="/EditProfile">
           <Header/>
           <EditProfile/>
+        </Route>
+        <Route path="/Profile">
+          <Header/>
+          <Profile/>
         </Route>
         <Route path="/wishlist">
           <Header/>
