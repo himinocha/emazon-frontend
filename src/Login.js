@@ -1,11 +1,36 @@
 import React, { useState } from 'react';
 import './Login.css'
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function Login() {
     
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+
+    async function loginUser(event) {
+		event.preventDefault()
+
+		const response = await fetch('http://localhost:8888/api/login', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				email,
+				password,
+			}),
+		})
+
+		const data = await response.json()
+
+        if (data.user) {
+			localStorage.setItem('token', data.user)
+			alert('Login successful')
+			window.location.href = '/home'
+		} else {
+			alert('Please check your username and password')
+		}
+	}
 
     return (
         <div className='login'>
@@ -19,9 +44,9 @@ function Login() {
             <div className='login__container'>
                 <h1>Sign-in</h1>
 
-                <form>
+                <form onSubmit={loginUser}>
                     <h5>E-mail</h5>
-                    <input type='text' value={email} onChange={e => setEmail(e.target.value)} />
+                    <input type='email' value={email} onChange={e => setEmail(e.target.value)} />
 
                     <h5>Password</h5>
                     <input type='password' value={password} onChange={e => setPassword(e.target.value)} />

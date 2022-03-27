@@ -34,6 +34,31 @@ function CreateAccount() {
         alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
         return false;
     }
+    
+    const history = useHistory()
+
+	async function registerUser(event) {
+		event.preventDefault()
+
+		const response = await fetch('http://localhost:8888/api/register', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				firstName,
+                lastName,
+				email,
+				password,
+			}),
+		})
+
+		const data = await response.json()
+
+		if (data.status === 'ok') {
+			history.push('/login')
+		}
+	}
 
     return (
         <div className='CreateAccount'>
@@ -47,7 +72,7 @@ function CreateAccount() {
             <div className='CreateAccount__container'>
                 <h1>Create an Account</h1>
 
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form onSubmit={registerUser}>
                      <h5>First Name</h5>
                     <input type='text' value={firstName} onChange={e => setFirstName(e.target.value)} />
 

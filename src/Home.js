@@ -16,7 +16,7 @@ function Home() {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    fetch("https://emazon-backend.herokuapp.com/api/products")
+    fetch("http://localhost:8888/api/products")
       .then((response) => response.json())
       .then((responseJson) => {
         setProducts(responseJson.data);
