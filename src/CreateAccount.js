@@ -40,7 +40,7 @@ function CreateAccount() {
 	async function registerUser(event) {
 		event.preventDefault()
 
-		const response = await fetch('http://localhost:8888/api/register', {
+		const response = await fetch('https://emazon-backend.herokuapp.com/api/register', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
