@@ -39,6 +39,7 @@ function Header() {
             </div>
             </Link>
 
+            <Link to='/Profile'>
             <div className='header__option'>
                 <span className='header__optionLineOne'>
                     Your
@@ -48,6 +49,7 @@ function Header() {
                     Account
                 </span>
             </div>
+            </Link>
 
             <Link to="/wishlist">
             <div className='header__optionCart'>
