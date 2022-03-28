@@ -1,18 +1,23 @@
-import "./EditProfile.css"
 import React, { useState } from 'react';
-import { Link, useHistory } from "react-router-dom";
-import { useForm } from 'react-hook-form';
+import './EditProfile.css'
+import {Link} from "react-router-dom"
+import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
+import EmailIcon from '@mui/icons-material/Email';
+import ChatIcon from '@mui/icons-material/Chat';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useStateValue } from "./StateProvider";
-import Product from "./Product";
-function EditProfile() {
+import { useForm } from 'react-hook-form';
+import HowToRegIcon from '@mui/icons-material/HowToReg';
+
+function Profile(){
     const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
-    const [confirmPassword, setConfirmPassword] = useState('');
-    const [addDescription, setAddDescription] = useState('');
+    const [description, setDescription] = useState('');
+
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('Must be a valid email').max(255),
         password: Yup.string()
@@ -21,7 +26,7 @@ function EditProfile() {
         confirmPassword: Yup.string()
             .required('Confirm Password is required')
             .oneOf([Yup.ref('password')], 'Passwords must match')
-
+            
     });
     const formOptions = { resolver: yupResolver(validationSchema) };
 
@@ -35,151 +40,119 @@ function EditProfile() {
         return false;
     }
 
-    return (
-        <div className="home__container">
-
-            <img
-                className="background__image"
-                src="https://github.com/yikevding/emazon/blob/main/emory.jpeg?raw=true"
-                alt=""
-            />
-            <hr className="mt-0 mb-4" />
-
-            <div className="row">
-                <div className="col-xl-4" >
-
-                    <div className="card mb-4 mb-xl-0">
-                        <div className="card-header">Add New Product</div>
-                        <div className="col-md-11 mx-auto">
-
-                            <div className="card-body">
-                                    {/* temp image */}
-                                <img className='product__img' src="https://github.com/yikevding/emazon/blob/main/image/dinning%20table.jpeg?raw=true" alt="" />
-                                <div class="col text-center">
-                                    <button align="center" className="btn btn-secondary" type="button">Add Image</button>
-                                </div>
-
-
-                                <form>
-
-
-                                    <div className="row gx-3 mb-2" >
-                                        <label className="small mb-1">Product Name</label>
-                                        <input className="form-control" id="title" type="text" />
-                                    </div>
-                                    <div className="row gx-3 mb-2" >
-                                        <label className="small mb-1">List Price</label>
-                                        <input className="form-control" id="price" type="text" />
-                                    </div>
-                                    <div className="row gx-3 mb-2" >
-                                        <label className="small mb-1">Product Description</label>
-                                        <input className="form-control" id="description" type="text" />
-                                    </div>
-                                    <div className="row gx-3 mb-2" >
-                                        <label className="small mb-1">Product Specifications</label>
-                                        <div className="row gx-3 mb-2">
-
-                                            <div className="col-md max-auto">
-                                                <label className="small mb-1">Width:</label>
-                                                <input className="form-control" id="width" type="text" />
-                                            </div>
-                                            <div className="col-md max-auto">
-                                                <label className="small mb-1">Height:</label>
-                                                <input className="form-control" id="height" type="text" />
-                                            </div>
-                                            <div className="col-md max-auto">
-                                                <label className="small mb-1">Depth:</label>
-                                                <input className="form-control" id="depth" type="text" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="row gx-2 " >
-
-                                        <button type='submit' className="btn btn-primary" type="button">Upload Product</button>
-
-
-                                    </div>
-
-
-                                </form>
-                            </div>
-                        </div>
-
-                    </div>
+    return(
+        <div className='profile'>
+            <div className='profile_header'>
+                <div className='profile_image'>
+                    <img 
+                    src='https://github.com/yikevding/emazon/blob/main/emory.jpeg?raw=true'
+                    width={200}/>
                 </div>
-                <div className="col-xl-8">
 
-                    <div className="card mb-4">
-                        <div className="card-header">Edit Your Profile</div>
-                        <div className="card-body">
-                            <form onSubmit={handleSubmit(onSubmit)}>
+                <div className='profile_info'>
+                    <h3 className='user_name'>
+                        User's Name
+                    </h3>
 
-                                <div className="mb-3">
-                                    <label className="small mb-1">Edit Email</label>
-                                    <input className="form-control" type='email' name="email" value={email} onChange={e => setEmail(e.target.value)} />
-                                    <div className="invalid-feedback">{errors.email?.message}</div>
-                                </div>
-
-                                <div className="row gx-3 mb-3">
-
-                                    <div className="col-md-6">
-                                        <label className="small mb-1" >Change Password</label>
-
-                                        <input className="form-control" type='password' value={password} name="password" {...register('password')} className={`form-control ${errors.password ? 'is-invalid' : ''}`} onChange={e => setPassword(e.target.value)} />
-                                        <div className="invalid-feedback">{errors.password?.message}</div>
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <label className="small mb-1" for="inputLastName">Confirm New Password</label>
-
-                                        <input className="form-control" type='password'
-                                            value={confirmPassword}
-                                            name="confirmPassword" {...register('confirmPassword')}
-                                            className={`form-control ${errors.confirmPassword ? 'is-invalid' : ''}`}
-                                            onChange={e => setConfirmPassword(e.target.value)} />
-                                        <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
-                                    </div>
-                                </div>
-
-                                <div className="row gx-3 mb-3">
-
-                                    <div className="col-md-6">
-                                        <label className="small mb-1" for="inputOrgName">Change First Name</label>
-
-                                        <input className="form-control" type='text' value={firstName} onChange={e => setFirstName(e.target.value)} />
-                                    </div>
-
-                                    <div className="col-md-6">
-                                        <label className="small mb-1" for="inputLocation">Change Last Name</label>
-                                        <input className="form-control" type='text' value={lastName} onChange={e => setLastName(e.target.value)} />
-                                    </div>
-                                </div>
-
-                                <div className="mb-3">
-                                    <label className="small mb-1" for="inputEmailAddress">Add Description (ex. I am a second-year student at Emory)</label>
-                                    <input className="form-control" type='text' value={addDescription} onChange={e => setAddDescription(e.target.value)} />
-
-                                </div>
-
-                                <button type='submit' className="btn btn-primary" type="button">Save changes</button>
-                            </form>
-                        </div>
+                    <div className='occupation'>
+                        User's Occupation(eg. Student, Faculty, etc.)
                     </div>
-                    <div className="card mb-4">
-                        <div className="card-header">Previously Uploaded Products</div>
-                        <div className="card-body">
-                            <div className="item__row">
 
-                                {/* costumize for user later */}
-                                <label className="small mb-1">You have not uploaded any products.</label>
+                    <Link to='/EditProfile'>
+                        <button className='edit_profile_button'>
+                            <EditIcon/> Edit Profile
+                        </button>
+                    </Link>
 
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
-    );
 
-};
-export default EditProfile;
+            <div className='profile_main_body'>
+                <div className='left_side'>
+                    <div className='info_side'>
+                        <p className='phone_number'>
+                            <PhoneEnabledIcon/> User's Phone #
+                        </p>
+
+                        <p className='email'>
+                            <EmailIcon/> User's Email
+                        </p>
+                        
+                        <div className='user_bio'>
+                            <p className='bio'>
+                                Hello, my name is Jason. I'm a junior at Emory University.
+                                My major is Computer Science. I live at Highland Lake. 
+                                Hopefully, there is something that you need.
+                            </p>
+                        </div>
+
+                        <div className='profile_buttons'>
+                            <button className='chat_button'>
+                                <ChatIcon/> Chat
+                            </button>
+
+                                <Link to ='/ItemUpload'>
+                                    <button className='sell_button'>
+                                        <AddIcon/> Sell
+                                    </button>
+                                </Link>
+                        </div>
+                    </div>
+                </div>
+
+                <div className='right_side'>
+                        <div className='detail_side'>
+                            <h2>Edit Your Information</h2>    
+                            <div class = "header-bottom"></div>
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <h5>First Name</h5>
+                                <input type='text' className='inputBox' placeholder='Andy' value={firstName} onChange={e => setFirstName(e.target.value)} />
+
+                                <h5>Last Name</h5>
+                                <input type='text' className='inputBox' placeholder='Chen' value={lastName} onChange={e => setLastName(e.target.value)} />
+                                
+
+                                <h5>E-mail</h5>
+                                <input type='email' 
+                                className='inputBox'
+                                name = "email" 
+                                value={email} 
+                                placeholder='andychen@gmail.com'
+                                onChange={e => setEmail(e.target.value)} />
+                                <div className="invalid-feedback">{errors.email?.message}</div>
+
+                                <h5>Phone Number</h5>
+                                <input type='tel' 
+                                name = "phoneNumber" 
+                                className='inputBox'
+                                value={phoneNumber} 
+                                placeholder='123-457-3123'
+                                onChange={e => setPhoneNumber(e.target.value)} />
+                                <div className="invalid-feedback">{errors.email?.message}</div>
+
+                                <h5>Description</h5>
+                                <input type='text' 
+                                name = "Description" 
+                                className='description'
+                                value={description} 
+                                placeholder='Enter a description here!'
+                                onChange={e =>setDescription(e.target.value)} />
+                                <div className="invalid-feedback">{errors.email?.message}</div>
+
+                                <Link to ="/Profile">
+                                <button type='submit' className='CreateAccount__signInButton'>
+                                    <HowToRegIcon/>
+                                </button>
+                                </Link>
+                            </form>
+                        </div>
+                </div>
+
+            </div>
+        </div>
+    )
+
+
+}
+
+export default Profile

@@ -1,7 +1,7 @@
 import React from 'react'
 import './Profile.css'
 import {Link} from "react-router-dom"
-import Product from "./Product";
+import Product from "./UserProduct";
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import EmailIcon from '@mui/icons-material/Email';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -45,7 +45,7 @@ function Profile(){
                             <PhoneEnabledIcon/> User's Phone #
                         </p>
 
-                        <p>
+                        <p className='email'>
                             <EmailIcon/> User's Email
                         </p>
                         
@@ -62,9 +62,11 @@ function Profile(){
                                 <ChatIcon/> Chat
                             </button>
 
-                            <button className='sell_button'>
-                                <AddIcon/> Sell
-                            </button>
+                                <Link to ='/ItemUpload'>
+                                    <button className='sell_button'>
+                                        <AddIcon/> Sell
+                                    </button>
+                                </Link>
                         </div>
                     </div>
                 </div>
@@ -72,13 +74,19 @@ function Profile(){
                 <div className='right_side'>
 
                     <div className='row_one'>
-                        {/* <Product
+                        <Product
                             title="Classical Comfortable Grey Sofa"
                             price={1399.99}
                             rating={5}
                             image="https://github.com/yikevding/emazon/blob/main/image/sofa.jpeg?raw=true"
-                        /> */}
-                    </div>
+                        />
+                        <Product
+                            title="Advanced Gaming Chair"
+                            price={299.99}
+                            rating={4}
+                            image="https://github.com/yikevding/emazon/blob/main/image/gaming%20chair.jpeg?raw=true"
+                        />
+                        </div>
                 </div>
 
             </div>

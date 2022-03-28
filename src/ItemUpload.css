@@ -132,7 +132,7 @@ body {
     width:60%;
 }
 
-.detail_side{
+.image_side{
     width:80%;
     background-color: #fff;
     box-shadow: 0px 3px 5px rgba(0,0,0,.2);
@@ -158,9 +158,11 @@ body {
 .inputBox {
     height: 30px;
     margin-bottom: 10px;
+    margin-top:2px;
     background-color: white;
     width: 62%;
-    border-radius: 5px;
+    border-color:lightgrey;
+    border-width: 1.5px;
   }
 
 .detail_side > p {
@@ -168,7 +170,7 @@ body {
     font-size: 12px;
 }
 
-.detail_side > h2 {
+.image_side > h2 {
     margin-top: 0 auto;
     margin-bottom: 20px;
 }
@@ -202,9 +204,133 @@ body {
     height: 80px;
     margin-bottom: 10px;
     background-color: white;
-    border-radius: 5px;
     width: 62%;
-  }
+    border-color:lightgrey;
+    border-width: 1.5px;
+}
+
+.uploadButton {
+    width: 300px;
+    height: 100px;
+    margin-bottom: 100px;
+}
+
+.sell_button2 {
+  align-items: center;
+  appearance: none;
+  background-color: midnightblue;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,midnightblue 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  width: 31%;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 18px;
+  margin-right: 10px;
+}
+
+.sell_button2:focus {
+  box-shadow: midnightblue 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.sell_button2:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, midnightblue 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.sell_button2:active {
+  box-shadow: midnightblue 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  width: 31%;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 18px;
+  margin-right: 10px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.button-81 {
+border: 0px;
+    padding: 10px;
+    width: 80px;
+    border-radius: 3px;
+    background-color:#f0c14b;
+    font-family: 'Bree Serif', sans-serif;
+    font-size: 0.8rem;
+    margin: 5px 2px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 10px;
+    transition: background .3s ease-in-out;
+    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, .3);
+    color: #fff;
+}
+
+.button-81:hover{
+    background-color: midnightblue;
+}
 
 .header-bottom{
   height: 34px;
@@ -217,4 +343,13 @@ body {
   position: -webkit-sticky;
   position: sticky;
   top: 34px;
+}
+
+
+.selectBox {
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top:2px;
+    width: 63%;
+    font-size: 10pt;
 }

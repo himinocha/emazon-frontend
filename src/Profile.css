@@ -64,7 +64,7 @@ body {
     border: 0px;
     padding: 10px;
     border-radius: 3px;
-    background-color: rgb(50, 97, 228);
+    background-color: midnightblue;
     font-family: 'Bree Serif', sans-serif;
     font-size: 1rem;
     cursor: pointer;
@@ -75,7 +75,7 @@ body {
 }
 
 .edit_profile_button:hover{
-    background-color: rgba(288, 0, 70, .8);
+    background-color: #f0c14b;
 }
 
 .profile_main_body{
@@ -85,7 +85,7 @@ body {
 }
 
 .info_side{
-    width: 300px;
+    width:300px;
     background-color: #fff;
     box-shadow: 0px 3px 5px rgba(0,0,0,.2);
     padding: 90px 30px 20px;
@@ -103,7 +103,7 @@ body {
     padding: 10px;
     width: 100%;
     border-radius: 3px;
-    background-color: rgb(50, 97, 228);
+    background-color:midnightblue;
     font-family: 'Bree Serif', sans-serif;
     font-size: 1rem;
     margin: 5px 2px;
@@ -116,7 +116,7 @@ body {
 }
 
 .chat_button:hover, .sell_button:hover{
-    background-color: rgba(288, 0, 70, .8);
+    background-color: #f0c14b;
 }
 
 .row_one {
@@ -124,4 +124,14 @@ body {
     z-index: 1;
     margin-left: 5px;
     margin-right: 5px;
-  }
+}
+
+.phone_number, .email {
+    font-size: 1.3rem;
+}
+
+.bio{
+    font-size: 1rem;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
