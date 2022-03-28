@@ -6,6 +6,9 @@ import CreateAccount from "./CreateAccount"
 import ItemDetail from "./ItemDetail"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Wishlist from './Wishlist';
+import EditProfile from './EditProfile';
+import Profile from './Profile'
+import ItemUpload from './ItemUpload'
 
 function App() {
   return (
@@ -19,6 +22,18 @@ function App() {
         </Route>
         <Route path="/Login">
           <Login/>
+        </Route>
+        <Route path="/EditProfile">
+          <Header/>
+          <EditProfile/>
+        </Route>
+        <Route path="/ItemUpload">
+          <Header/>
+          <ItemUpload/>
+        </Route>
+        <Route path="/Profile">
+          <Header/>
+          <Profile/>
         </Route>
         <Route path="/wishlist">
           <Header/>

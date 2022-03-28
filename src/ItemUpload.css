@@ -1,0 +1,355 @@
+body {
+    background-color: #e9e9e9;
+}
+
+.profile{
+    padding-top: 90px;
+    font-family: "poppins", sans-serif;
+    margin: 0 100px;
+}
+
+.profile_header{
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    height: 190px;
+    position: relative;
+    box-shadow: 0px 3px 4px rgba(0,0,0,.2);
+}
+
+.profile_image{
+    float: left;
+    width: 340px;
+    height: 200px;
+}
+
+.profile_image > img{
+    border-radius: 50%;
+    width: 230px;
+    height: 230px;
+    border: 4px solid #fff;
+    box-shadow:  0px 5px 10px rgba(0,0,0,.2);
+    position: absolute;
+    left: 50px;
+    top: 20px;
+    z-index: 5;
+    background-color: #fff;
+}
+
+.profile_info{
+    float: left;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 60px;
+}
+
+.profile_info > h3{
+    font-variant: small-caps;
+    font-size: 2rem;
+    font-family: sans-serif;
+    font-weight: bold;
+    color: black;
+}
+
+.profile_info .occupation{
+    display: flex;
+    font-weight: bold;
+}
+
+
+
+.edit_profile_button{
+    position: absolute;
+    right: 50px;
+    top: 50%;
+
+    border: 0px;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: midnightblue; 
+    font-family: 'Bree Serif', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    transition: background .3s ease-in-out;
+    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, .3);
+    color: #fff;
+}
+
+.edit_profile_button:hover{
+    background-color: #f0c14b;
+}
+
+.profile_main_body{
+    width: 100%;
+    display: flex;
+    padding-right: 15px;
+}
+
+.info_side{
+    width:300px;
+    background-color: #fff;
+    box-shadow: 0px 3px 5px rgba(0,0,0,.2);
+    padding: 90px 30px 20px;
+    margin-bottom: 7px;
+    color: #333;
+    font-size: 14px;
+}
+
+.profile_buttons{
+    display: flex;
+}
+
+.chat_button, .sell_button{
+    border: 0px;
+    padding: 10px;
+    width: 100%;
+    border-radius: 3px;
+    background-color: midnightblue;
+    font-family: 'Bree Serif', sans-serif;
+    font-size: 1rem;
+    margin: 5px 2px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 10px;
+    transition: background .3s ease-in-out;
+    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, .3);
+    color: #fff;
+}
+
+.chat_button:hover, .sell_button:hover{
+    background-color: #f0c14b;
+}
+
+.row_one {
+    display: flex;
+    z-index: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+.right_side {
+    width:60%;
+}
+
+.image_side{
+    width:80%;
+    background-color: #fff;
+    box-shadow: 0px 3px 5px rgba(0,0,0,.2);
+    padding: 90px 30px 20px;
+    margin-bottom: 7px;
+    margin-left: 14px;
+    color: #333;
+    font-size: 20px;
+    display:flex;
+    flex-direction: column;
+    height: fit-content;
+}
+
+.detail_side > form > h1 {
+    font-weight: 500;
+    margin-bottom: 20px;
+  }
+
+.detail_side > form > h5 {
+    margin-bottom: 5px;
+}
+
+.inputBox {
+    height: 30px;
+    margin-bottom: 10px;
+    margin-top:2px;
+    background-color: white;
+    width: 62%;
+    border-color:lightgrey;
+    border-width: 1.5px;
+  }
+
+.detail_side > p {
+    margin-top: 15px;
+    font-size: 12px;
+}
+
+.image_side > h2 {
+    margin-top: 0 auto;
+    margin-bottom: 20px;
+}
+
+.CreateAccount__signInButton {
+    background: #f0c14b;
+    border-radius: 2px;
+    width: 100%;
+    height: 50px;
+    border: 1px solid;
+    margin-top: 10px;
+    border-color: #a88734 #9c7e31 #846a29;
+    cursor: pointer;
+  }
+
+.invalid-feedback{
+    font-size: 1rem;
+}
+
+.phone_number, .email {
+    font-size: 1.3rem;
+}
+
+.bio{
+    font-size: 1rem;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.description{
+    height: 80px;
+    margin-bottom: 10px;
+    background-color: white;
+    width: 62%;
+    border-color:lightgrey;
+    border-width: 1.5px;
+}
+
+.uploadButton {
+    width: 300px;
+    height: 100px;
+    margin-bottom: 100px;
+}
+
+.sell_button2 {
+  align-items: center;
+  appearance: none;
+  background-color: midnightblue;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,midnightblue 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  width: 31%;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 18px;
+  margin-right: 10px;
+}
+
+.sell_button2:focus {
+  box-shadow: midnightblue 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.sell_button2:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, midnightblue 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.sell_button2:active {
+  box-shadow: midnightblue 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.button-30 {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  height: 48px;
+  width: 31%;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: 18px;
+  margin-right: 10px;
+}
+
+.button-30:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.button-30:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-30:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.button-81 {
+border: 0px;
+    padding: 10px;
+    width: 80px;
+    border-radius: 3px;
+    background-color:#f0c14b;
+    font-family: 'Bree Serif', sans-serif;
+    font-size: 0.8rem;
+    margin: 5px 2px;
+    cursor: pointer;
+    outline: none;
+    margin-bottom: 10px;
+    transition: background .3s ease-in-out;
+    box-shadow: 0px 5px 7px 0px rgba(0, 0, 0, .3);
+    color: #fff;
+}
+
+.button-81:hover{
+    background-color: midnightblue;
+}
+
+.header-bottom{
+  height: 34px;
+  bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  z-index: 3;
+  background-color:lightgrey;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 34px;
+}
+
+
+.selectBox {
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top:2px;
+    width: 63%;
+    font-size: 10pt;
+}
