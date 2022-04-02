@@ -45,6 +45,27 @@ function ItemUpload(){
         }
     }, []);
 
+    async function uploadProduct(event) {
+		event.preventDefault()
+
+		const response = await fetch('https://localhost:1010/api/products/upload', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				title,
+				type,
+				price,
+			}),
+		})
+		const data = await response.json()
+
+		if (data.status === 'ok') {
+			console.log('ok')
+		}
+	}
+
     return(
         <div className='profile'>
             <div className='profile_header'>
