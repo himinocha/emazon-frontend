@@ -25,13 +25,19 @@ function Profile(){
                 localStorage.removeItem('token')
                 history.replace('/login')
             } else {
-                console.log(u.email)
-                fetch(`http://emazon-backend.herokuapp.com/api/products/email/${u.email}`)
-                    .then((response) => response.json())
-                    .then((responseJson) => {
-                        setProducts(responseJson.data);
-                    });
-                console.log("fetch working")
+                fetch("https:/emazon-backend.herokuapp.com/api/products/email", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: u.email,
+                    }),
+                })
+                .then((response) => response.json())
+                .then((responseJson) => {
+                    setProducts(responseJson.data);
+                });
             }
         }
     }, []);
