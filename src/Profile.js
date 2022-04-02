@@ -1,15 +1,41 @@
 import React from 'react'
 import './Profile.css'
-import {Link} from "react-router-dom"
+import { Link, useHistory } from "react-router-dom"
 import Product from "./UserProduct";
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import EmailIcon from '@mui/icons-material/Email';
 import ChatIcon from '@mui/icons-material/Chat';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
+import jwtDecode from 'jwt-decode';
+import { useState, useEffect } from "react";
 
 
 function Profile(){
+    const history = useHistory();
+    const [user, setUser] = useState([]);
+    const [products, setProducts] = useState([]);
+    const token = localStorage.getItem('token');
+
+    useEffect(() => {
+        if (token) {
+            const u = jwtDecode(token)
+            setUser(u)
+            if (!u) {
+                localStorage.removeItem('token')
+                history.replace('/login')
+            } else {
+                console.log(u.email)
+                fetch(`http://emazon-backend.herokuapp.com/api/products/email/${u.email}`)
+                    .then((response) => response.json())
+                    .then((responseJson) => {
+                        setProducts(responseJson.data);
+                    });
+                console.log("fetch working")
+            }
+        }
+    }, []);
+
 
     return(
         <div className='profile'>
@@ -22,7 +48,7 @@ function Profile(){
 
                 <div className='profile_info'>
                     <h3 className='user_name'>
-                        User's Name
+                        {user.firstName} {user.lastName}
                     </h3>
 
                     <div className='occupation'>
@@ -46,7 +72,7 @@ function Profile(){
                         </p>
 
                         <p className='email'>
-                            <EmailIcon/> User's Email
+                            <EmailIcon/> {user.email}
                         </p>
                         
                         <div className='user_bio'>
@@ -72,11 +98,21 @@ function Profile(){
                 </div>
 
                 <div className='right_side'>
+                    <div className="home__row">
+                        {products.map((product, i) => (
+                            <Product
+                            title={product.name}
+                            price={product.price}
+                            rating={product.rating}
+                            image={product.image}
+                            />
+                        ))}
+                    </div>
 
-                    <div className='row_one'>
+                    {/* <div className='row_one'>
                         <Product
-                            title="Classical Comfortable Grey Sofa"
-                            price={1399.99}
+                            title="ogg"
+                            price={999.99}
                             rating={5}
                             image="https://github.com/yikevding/emazon/blob/main/image/sofa.jpeg?raw=true"
                         />
@@ -86,7 +122,7 @@ function Profile(){
                             rating={4}
                             image="https://github.com/yikevding/emazon/blob/main/image/gaming%20chair.jpeg?raw=true"
                         />
-                        </div>
+                    </div> */}
                 </div>
 
             </div>

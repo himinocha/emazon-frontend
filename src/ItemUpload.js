@@ -1,13 +1,14 @@
-import React, {useState} from 'react'
-import './ItemUpload.css'
-import {Link} from "react-router-dom"
+import React, {useState, useEffect} from 'react';
+import './ItemUpload.css';
+import { Link, useHistory} from "react-router-dom";
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import EmailIcon from '@mui/icons-material/Email';
 import ChatIcon from '@mui/icons-material/Chat';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import ImageUploading from 'react-images-uploading';
-import Select from 'react-select'
+import Select from 'react-select';
+import jwtDecode from 'jwt-decode';
 
 function ItemUpload(){
     const [images, setImages] = React.useState([]);
@@ -16,6 +17,10 @@ function ItemUpload(){
     const [title, setTitle] = useState('');
     const [type, setType] = useState('');
     const maxNumber = 69;
+    const history = useHistory();
+    const [user, setUser] = useState([]);
+    const [products, setProducts] = useState([]);
+    const token = localStorage.getItem('token');
 
     const onChange = (imageList, addUpdateIndex) => {
     // data for submit
@@ -29,6 +34,17 @@ function ItemUpload(){
         { value: 'textbooks', label: 'Text Books' }
         ]
 
+    useEffect(() => {
+        if (token) {
+            const u = jwtDecode(token)
+            setUser(u)
+            if (!u) {
+                localStorage.removeItem('token')
+                history.replace('/login')
+            }
+        }
+    }, []);
+
     return(
         <div className='profile'>
             <div className='profile_header'>
@@ -40,7 +56,7 @@ function ItemUpload(){
 
                 <div className='profile_info'>
                     <h3 className='user_name'>
-                        User's Name
+                        {user.firstName} {user.lastName}
                     </h3>
 
                     <div className='occupation'>
@@ -64,7 +80,7 @@ function ItemUpload(){
                         </p>
 
                         <p className='email'>
-                            <EmailIcon/> User's Email
+                            <EmailIcon/> {user.email}
                         </p>
                         
                         <div className='user_bio'>
