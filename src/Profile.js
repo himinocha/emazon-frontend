@@ -25,7 +25,7 @@ function Profile(){
                 localStorage.removeItem('token')
                 history.replace('/login')
             } else {
-                fetch("https:/emazon-backend.herokuapp.com/api/products/email", {
+                fetch("https://emazon-backend.herokuapp.com/api/products/email", {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
