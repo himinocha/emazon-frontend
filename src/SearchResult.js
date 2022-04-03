@@ -26,8 +26,10 @@ function SearchResult(){
 
                     <Radio.Group >
                         <Space direction="vertical">
-                            <Radio>Used</Radio>
-                            <Radio value={4}>New</Radio>
+                            <Radio value={0}>Used</Radio>
+                            <Radio value={1}>Like New</Radio>
+                            <Radio value={2}>Brand New</Radio>
+                            <Radio value={3}>All</Radio>
                         </Space>
                     </Radio.Group>
                     <br/>
@@ -38,10 +40,11 @@ function SearchResult(){
                     </h2>
                     <Radio.Group >
                         <Space direction="vertical">
-                            <Radio>Under $10</Radio>
-                            <Radio value={0}>$10 to $50</Radio>
-                            <Radio value={1}>$50 to $100</Radio>
-                            <Radio value={2}>$100 to $200</Radio>
+                            <Radio value={0}>Under $10</Radio>
+                            <Radio value={1}>$10 to $50</Radio>
+                            <Radio value={2}>$50 to $100</Radio>
+                            <Radio value={3}>$100 to $200</Radio>
+                            <Radio value={4}>All</Radio>
                         </Space>
                     </Radio.Group>
                     <br/>
