@@ -1,0 +1,42 @@
+@import '~antd/dist/antd.css';
+
+.results-header {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    box-shadow: 0 0 10px #ddd;
+    font-size: 16px;
+    padding: 10px 25px;
+    font-weight: 500;
+  }
+  
+  .category {
+    color: #FF9900;
+    font-weight: bold;
+  }
+
+  .prices {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  
+
+  .button{
+    padding: 3px 30px;
+    font-weight: bold;
+    background-color: #fdb13f ;
+    border-color: #fdb13f;
+    border: solid 2px #fdb13f;
+    color: white;
+  }
+
+  /* .login:hover{
+    background-color: #FF9900;
+    border: solid 2px white;
+    color: white;
+  } */
+
+  /* .login:focus{
+    background-color: #FF9900;
+    border: solid 2px white;
+    color: white;
+  } */
