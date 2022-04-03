@@ -1,5 +1,9 @@
 @import '~antd/dist/antd.css';
 
+.result_page{
+    @import '~antd/dist/antd.css';
+}
+
 .results-header {
     border-top: 1px solid #ccc;
     border-bottom: 1px solid #ccc;

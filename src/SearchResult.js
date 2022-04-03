@@ -1,7 +1,7 @@
 import React from 'react'
 import './SearchResult.css'
 
-import {Button, Layout, Radio, InputNumber, Space} from "antd";
+import {Button, Layout, Radio, InputNumber, Space, Rate} from "antd";
 import Product from "./Product";
 
 const {Sider, Content } = Layout;
@@ -10,6 +10,7 @@ const {Sider, Content } = Layout;
 function SearchResult(){
 
     return(
+        <body className='result_page'>
         <div className="container">
             <div className="results-header">
                 <span>Showing Poducts for </span>
@@ -26,9 +27,9 @@ function SearchResult(){
 
                     <Radio.Group >
                         <Space direction="vertical">
-                            <Radio value={0}>Used</Radio>
-                            <Radio value={1}>Like New</Radio>
-                            <Radio value={2}>Brand New</Radio>
+                            <Radio value={0}>Used <Rate defaultValue={3} disabled={true}></Rate></Radio>
+                            <Radio value={1}>Like New <Rate defaultValue={4} disabled={true}></Rate></Radio>
+                            <Radio value={2}>Brand New <Rate defaultValue={5} disabled={true}></Rate></Radio>
                             <Radio value={3}>All</Radio>
                         </Space>
                     </Radio.Group>
@@ -82,6 +83,7 @@ function SearchResult(){
 
         
         </div>
+        </body>
     )
 
 
