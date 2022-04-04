@@ -67,7 +67,7 @@ function Profile(){
                     </h3>
 
                     <div className='occupation'>
-                        User's Occupation(eg. Student, Faculty, etc.)
+                        {user.occupation}
                     </div>
 
                     <Link to='/Home'>
@@ -89,7 +89,7 @@ function Profile(){
                 <div className='left_side'>
                     <div className='info_side'>
                         <p className='phone_number'>
-                            <PhoneEnabledIcon/> User's Phone #
+                            <PhoneEnabledIcon/> {user.phoneNumber}
                         </p>
 
                         <p className='email'>
@@ -98,9 +98,7 @@ function Profile(){
                         
                         <div className='user_bio'>
                             <p className='bio'>
-                                Hello, my name is Jason. I'm a junior at Emory University.
-                                My major is Computer Science. I live at Highland Lake. 
-                                Hopefully, there is something that you need.
+                                {user.description}
                             </p>
                         </div>
 
