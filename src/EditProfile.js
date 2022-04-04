@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './EditProfile.css'
-import {Link} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import EmailIcon from '@mui/icons-material/Email';
 import ChatIcon from '@mui/icons-material/Chat';
@@ -10,13 +10,33 @@ import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
+import jwtDecode from 'jwt-decode';
+import LogoutIcon from '@mui/icons-material/Logout';
+import Select from 'react-select';
 
 function Profile(){
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [user, setUser] = useState([]);
     const [description, setDescription] = useState('');
+    const history = useHistory();
+    const token = localStorage.getItem('token');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [occupation, setOccupation] = useState('');
+
+
+    useEffect(() => {
+        if (token) {
+            const u = jwtDecode(token)
+            setUser(u)
+            if (!u) {
+                localStorage.removeItem('token')
+                history.replace('/login')
+            }
+        }
+    }, []);
 
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('Must be a valid email').max(255),
@@ -40,6 +60,19 @@ function Profile(){
         return false;
     }
 
+    const logout = () => {
+        localStorage.removeItem('token')
+        setIsLoggedIn(false)
+        history.replace('/Home')
+    }
+
+
+    const options = [
+        { value: 'student', label: 'Student' },
+        { value: 'faculty', label: 'Faculty' }
+        ]
+
+
     return(
         <div className='profile'>
             <div className='profile_header'>
@@ -51,12 +84,18 @@ function Profile(){
 
                 <div className='profile_info'>
                     <h3 className='user_name'>
-                        User's Name
+                        {user.firstName} {user.lastName}
                     </h3>
 
                     <div className='occupation'>
-                        User's Occupation(eg. Student, Faculty, etc.)
+                        {user.occupation}
                     </div>
+
+                    <Link to='/Home'>
+                        <button className='signout_button' onClickCapture={logout}>
+                            <LogoutIcon/> Sign out
+                        </button>
+                    </Link>
 
                     <Link to='/EditProfile'>
                         <button className='edit_profile_button'>
@@ -71,18 +110,16 @@ function Profile(){
                 <div className='left_side'>
                     <div className='info_side'>
                         <p className='phone_number'>
-                            <PhoneEnabledIcon/> User's Phone #
+                            <PhoneEnabledIcon/> {user.phoneNumber}
                         </p>
 
                         <p className='email'>
-                            <EmailIcon/> User's Email
+                            <EmailIcon/> {user.email}
                         </p>
                         
                         <div className='user_bio'>
                             <p className='bio'>
-                                Hello, my name is Jason. I'm a junior at Emory University.
-                                My major is Computer Science. I live at Highland Lake. 
-                                Hopefully, there is something that you need.
+                                {user.description}
                             </p>
                         </div>
 
@@ -106,10 +143,20 @@ function Profile(){
                             <div class = "header-bottom"></div>
                             <form onSubmit={handleSubmit(onSubmit)}>
                                 <h5>First Name</h5>
-                                <input type='text' className='inputBox' placeholder='Andy' value={firstName} onChange={e => setFirstName(e.target.value)} />
+                                <input type='text'
+                                 className='inputBox'
+                                 placeholder={user.firstName} 
+                                 defaultValue={user.firstName}
+                                 value={firstName} 
+                                 onChange={e => setFirstName(e.target.value)} />
 
                                 <h5>Last Name</h5>
-                                <input type='text' className='inputBox' placeholder='Chen' value={lastName} onChange={e => setLastName(e.target.value)} />
+                                <input type='text'
+                                 className='inputBox'
+                                 placeholder={user.lastName} 
+                                 defaultValue={user.lastName}
+                                 value={lastName} 
+                                 onChange={e => setLastName(e.target.value)} />
                                 
 
                                 <h5>E-mail</h5>
@@ -117,7 +164,8 @@ function Profile(){
                                 className='inputBox'
                                 name = "email" 
                                 value={email} 
-                                placeholder='andychen@gmail.com'
+                                defaultValue={user.email}
+                                placeholder={user.email}
                                 onChange={e => setEmail(e.target.value)} />
                                 <div className="invalid-feedback">{errors.email?.message}</div>
 
@@ -126,16 +174,27 @@ function Profile(){
                                 name = "phoneNumber" 
                                 className='inputBox'
                                 value={phoneNumber} 
-                                placeholder='123-457-3123'
+                                defaultValue={user.phone}
+                                placeholder={user.phone}
                                 onChange={e => setPhoneNumber(e.target.value)} />
                                 <div className="invalid-feedback">{errors.email?.message}</div>
+
+                                <h5>Occupation</h5>
+                                <Select
+                                    name="occupation"
+                                    options={options}
+                                    className="selectBox"
+                                    classNamePrefix="select"
+                                    onchange={e =>setOccupation(e.value)}
+                                />   
 
                                 <h5>Description</h5>
                                 <input type='text' 
                                 name = "Description" 
                                 className='description'
+                                defaultValue={user.description}
                                 value={description} 
-                                placeholder='Enter a description here!'
+                                placeholder='Enter Your New description here!'
                                 onChange={e =>setDescription(e.target.value)} />
                                 <div className="invalid-feedback">{errors.email?.message}</div>
 

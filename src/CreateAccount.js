@@ -4,6 +4,7 @@ import { Link, useHistory } from "react-router-dom";
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import Select from 'react-select';
 
 function CreateAccount() {
     
@@ -11,7 +12,10 @@ function CreateAccount() {
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
+    const [phoneNumber, setPhoneNumber] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [description, setDescription] = useState('');
+    const [occupation, setOccupation] = useState('');
 
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('Must be a valid email').max(255),
@@ -50,6 +54,7 @@ function CreateAccount() {
                 lastName,
 				email,
 				password,
+                occupation
 			}),
 		})
 
@@ -59,6 +64,11 @@ function CreateAccount() {
 			history.push('/login')
 		}
 	}
+    
+    const options = [
+        { value: 'student', label: 'Student' },
+        { value: 'faculty', label: 'Faculty' }
+        ]
 
     return (
         <div className='CreateAccount'>
@@ -102,6 +112,29 @@ function CreateAccount() {
                     onChange={e => setConfirmPassword(e.target.value)} />
                     <div className="invalid-feedback">{errors.confirmPassword?.message}</div>
 
+                    <h5>Phone Number</h5>
+                    <input type='tel' 
+                    name = "phoneNumber" 
+                    value={phoneNumber} 
+                    onChange={e => setPhoneNumber(e.target.value)} />
+
+                    <h5>Occupation</h5>
+                    <Select
+                        name="occupation"
+                        options={options}
+                        className="selectBox"
+                        classNamePrefix="select"
+                        onChange={e =>setOccupation(e.value)}
+                    />   
+
+                    <h5>Description</h5>
+                    <input type='text' 
+                    name = "Description" 
+                    value={description} 
+                    placeholder='Enter a description here!'
+                    onChange={e =>setDescription(e.target.value)} />
+
+                    <div className="invalid-feedback">{errors.email?.message}</div>
                     <button type='submit' className='CreateAccount__signInButton'>Register</button>
                 </form>
 

@@ -58,3 +58,10 @@
     cursor: pointer;
   }
 
+.selectBox {
+    height: 30px;
+    margin-bottom: 20px;
+    margin-top:2px;
+    width: 100%;
+    font-size: 10pt;
+}

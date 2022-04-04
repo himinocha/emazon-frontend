@@ -7,6 +7,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import ChatIcon from '@mui/icons-material/Chat';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
+import LogoutIcon from '@mui/icons-material/Logout';
 import jwtDecode from 'jwt-decode';
 import { useState, useEffect } from "react";
 
@@ -16,11 +17,13 @@ function Profile(){
     const [user, setUser] = useState([]);
     const [products, setProducts] = useState([]);
     const token = localStorage.getItem('token');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         if (token) {
             const u = jwtDecode(token)
             setUser(u)
+            setIsLoggedIn(true);
             if (!u) {
                 localStorage.removeItem('token')
                 history.replace('/login')
@@ -43,6 +46,12 @@ function Profile(){
     }, []);
 
 
+    const logout = () => {
+        localStorage.removeItem('token')
+        setIsLoggedIn(false)
+        history.replace('/Home')
+    }
+
     return(
         <div className='profile'>
             <div className='profile_header'>
@@ -58,8 +67,14 @@ function Profile(){
                     </h3>
 
                     <div className='occupation'>
-                        User's Occupation(eg. Student, Faculty, etc.)
+                        {user.occupation}
                     </div>
+
+                    <Link to='/Home'>
+                        <button className='signout_button' onClickCapture={logout}>
+                            <LogoutIcon/> Sign out
+                        </button>
+                    </Link>
 
                     <Link to='/EditProfile'>
                         <button className='edit_profile_button'>
@@ -74,7 +89,7 @@ function Profile(){
                 <div className='left_side'>
                     <div className='info_side'>
                         <p className='phone_number'>
-                            <PhoneEnabledIcon/> User's Phone #
+                            <PhoneEnabledIcon/> {user.phoneNumber}
                         </p>
 
                         <p className='email'>
@@ -83,9 +98,7 @@ function Profile(){
                         
                         <div className='user_bio'>
                             <p className='bio'>
-                                Hello, my name is Jason. I'm a junior at Emory University.
-                                My major is Computer Science. I live at Highland Lake. 
-                                Hopefully, there is something that you need.
+                                {user.description}
                             </p>
                         </div>
 

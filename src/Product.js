@@ -2,6 +2,7 @@ import React from "react";
 import "./Product.css";
 import { Link } from "react-router-dom";
 import { useStateValue } from './StateProvider';
+import { color } from "@mui/system";
 
 function Product({ id, title, image, price, rating, specification, detail }) {
 
@@ -37,11 +38,9 @@ function Product({ id, title, image, price, rating, specification, detail }) {
     <div className="product">
       <div className="product__info">
         <Link to={`/ItemDetail/${title}/${price}/${rating}`} onClick={viewCurrentItem} style={{ textDecoration: 'none'}}>
-          <p>{title}</p>
         </Link>
-        <p className="product__price">
-          <small>$</small>
-          <strong>{price}</strong>
+        <p className="product__title">
+          <strong>{title}</strong>
         </p>
         <div className="product__rating">
           {Array(rating)
@@ -50,6 +49,10 @@ function Product({ id, title, image, price, rating, specification, detail }) {
               <p>⭐️</p>
             ))}
         </div>
+        <p className="product__price">
+          <small>$</small>
+          <strong>{price}</strong>
+        </p>
       </div>
 
       <img src={image} alt="" />
