@@ -42,3 +42,7 @@
   flex-direction: column;
   display: flex;
 }
+
+.product__title {
+  color: black;
+}
