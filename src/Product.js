@@ -38,10 +38,11 @@ function Product({ id, title, image, price, rating, specification, detail }) {
     <div className="product">
       <div className="product__info">
         <Link to={`/ItemDetail/${title}/${price}/${rating}`} onClick={viewCurrentItem} style={{ textDecoration: 'none'}}>
-        </Link>
         <p className="product__title">
           <strong>{title}</strong>
         </p>
+        </Link>
+        
         <div className="product__rating">
           {Array(rating)
             .fill()
