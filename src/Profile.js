@@ -7,6 +7,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import ChatIcon from '@mui/icons-material/Chat';
 import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
+import LogoutIcon from '@mui/icons-material/Logout';
 import jwtDecode from 'jwt-decode';
 import { useState, useEffect } from "react";
 
@@ -16,11 +17,13 @@ function Profile(){
     const [user, setUser] = useState([]);
     const [products, setProducts] = useState([]);
     const token = localStorage.getItem('token');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     useEffect(() => {
         if (token) {
             const u = jwtDecode(token)
             setUser(u)
+            setIsLoggedIn(true);
             if (!u) {
                 localStorage.removeItem('token')
                 history.replace('/login')
@@ -43,6 +46,12 @@ function Profile(){
     }, []);
 
 
+    const logout = () => {
+        localStorage.removeItem('token')
+        setIsLoggedIn(false)
+        history.replace('/Home')
+    }
+
     return(
         <div className='profile'>
             <div className='profile_header'>
@@ -60,6 +69,12 @@ function Profile(){
                     <div className='occupation'>
                         User's Occupation(eg. Student, Faculty, etc.)
                     </div>
+
+                    <Link to='/Home'>
+                        <button className='signout_button' onClickCapture={logout}>
+                            <LogoutIcon/> Sign out
+                        </button>
+                    </Link>
 
                     <Link to='/EditProfile'>
                         <button className='edit_profile_button'>

@@ -9,18 +9,20 @@ import EditIcon from '@mui/icons-material/Edit';
 import ImageUploading from 'react-images-uploading';
 import Select from 'react-select';
 import jwtDecode from 'jwt-decode';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 function ItemUpload(){
     const [images, setImages] = React.useState([]);
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [title, setTitle] = useState('');
-    const [type, setType] = useState('');
+    const [rating,setRating] = useState('');
     const maxNumber = 69;
     const history = useHistory();
     const [user, setUser] = useState([]);
     const [products, setProducts] = useState([]);
     const token = localStorage.getItem('token');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const onChange = (imageList, addUpdateIndex) => {
     // data for submit
@@ -29,9 +31,9 @@ function ItemUpload(){
     };
 
     const options = [
-        { value: 'furniture', label: 'Furniture' },
-        { value: 'studysupplies', label: 'Study Supplies' },
-        { value: 'textbooks', label: 'Text Books' }
+        { value: 3, label: 'Used' },
+        { value: 4, label: 'Like New' },
+        { value: 5, label: 'Brand New' }
         ]
 
     useEffect(() => {
@@ -45,6 +47,12 @@ function ItemUpload(){
         }
     }, []);
 
+    const logout = () => {
+        localStorage.removeItem('token')
+        setIsLoggedIn(false)
+        history.replace('/Home')
+    }
+
     async function uploadProduct(event) {
 		event.preventDefault()
 
@@ -55,7 +63,7 @@ function ItemUpload(){
 			},
 			body: JSON.stringify({
 				title,
-				type,
+				rating,
 				price,
 			}),
 		})
@@ -83,6 +91,12 @@ function ItemUpload(){
                     <div className='occupation'>
                         User's Occupation(eg. Student, Faculty, etc.)
                     </div>
+
+                    <Link to='/Home'>
+                        <button className='signout_button' onClickCapture={logout}>
+                            <LogoutIcon/> Sign out
+                        </button>
+                    </Link>
 
                     <Link to='/EditProfile'>
                         <button className='edit_profile_button'>
@@ -145,15 +159,15 @@ function ItemUpload(){
                             name = "price" 
                             value={price} 
                             placeholder='Enter your ideal price of this item...'
-                            onChange={e => setPrice(e.target.value)} />
+                            onChange={e =>setPrice(e.target.value)} />
 
-                        <h5>Type</h5>
+                        <h5>Condition</h5>
                         <Select
-                            isMulti
                             name="colors"
                             options={options}
                             className="selectBox"
                             classNamePrefix="select"
+                            onChange={e =>setRating(e.value)}
                         />                        
 
                         <h5>Description</h5>
