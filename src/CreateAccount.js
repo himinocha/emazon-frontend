@@ -54,7 +54,9 @@ function CreateAccount() {
                 lastName,
 				email,
 				password,
-                occupation
+                phoneNumber,
+                occupation,
+                description
 			}),
 		})
 
