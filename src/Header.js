@@ -41,7 +41,7 @@ function Header() {
         <Link to="/Home">
         <img 
         className='header__logo'
-        src="https://github.com/yikevding/emazon/blob/main/logo.png?raw=true"
+        src="https://github.com/yikevding/emazon/blob/main/image/logo.png?raw=true"
         alt=""
         />
         </Link>
@@ -49,7 +49,9 @@ function Header() {
         <div className='header__search'>
             <input className='header__searchInput'
             type="text"/>
+            <Link to='/SearchResult'>
             <SearchIcon className='header__searchIcon'/>
+            </Link>
         </div>
 
         <div className='header__nav'>
