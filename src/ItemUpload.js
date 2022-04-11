@@ -17,17 +17,37 @@ function ItemUpload(){
     const [price, setPrice] = useState('');
     const [title, setTitle] = useState('');
     const [rating,setRating] = useState('');
-    const maxNumber = 69;
+    const maxNumber = 1;
     const history = useHistory();
     const [user, setUser] = useState([]);
     const [products, setProducts] = useState([]);
     const token = localStorage.getItem('token');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [loading, setLoading] = useState(false)
+    const [image, setImage] = useState('')
 
-    const onChange = (imageList, addUpdateIndex) => {
+    
+    const onChange = async (imageList, addUpdateIndex) => {
     // data for submit
         console.log(imageList, addUpdateIndex);
         setImages(imageList);
+
+        const files = imageList[0].file;
+        const data = new FormData();
+
+        data.append('file', files);
+        data.append('upload_preset', 'emazon_upload')
+        setLoading(true)
+
+        const res = await fetch("https://api.cloudinary.com/v1_1/daujwutxo/image/upload", {
+            method: 'POST',
+            body: data
+        })
+
+        const file = await res.json();
+        
+        setImage(file.secure_url)
+
     };
 
     const options = [
@@ -56,23 +76,30 @@ function ItemUpload(){
     async function uploadProduct(event) {
 		event.preventDefault()
 
-		const response = await fetch('https://localhost:1010/api/products/upload', {
+		const response = await fetch('https://emazon-backend.herokuapp.com/api/products/upload', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				title,
+                userEmail: user.email,
+				name: title,
 				rating,
 				price,
+                image
 			}),
 		})
 		const data = await response.json()
 
+        console.log(data);
+
 		if (data.status === 'ok') {
 			console.log('ok')
+            history.replace('/Profile')
 		}
+
 	}
+
 
     return(
         <div className='profile'>
@@ -197,24 +224,22 @@ function ItemUpload(){
                                 <div className="upload__image-wrapper">
                                     <button
                                     style={isDragging ? { color: 'blue' } : undefined}
-                                    class='button-30'
+                                    className='button-30'
                                     onClick={onImageUpload}
                                     {...dragProps}
                                     >
                                     Click or Drop here
                                     </button>
                                     &nbsp;
-                                    <button class='button-30' onClick={onImageRemoveAll}>Remove all images</button>
+                                    <button className='button-30' onClick={onImageRemoveAll}>Remove all images</button>
                                     &nbsp;
-                                    <Link to='/profile'>
-                                    <button class='sell_button2'>Post</button>
-                                    </Link>
+                                    <button className ='sell_button2' onClick={uploadProduct}>Post</button>
                                     {imageList.map((image, index) => (
                                     <div key={index} className="image-item">
                                         <img src={image['data_url']} alt="" width="300" />
                                         <div className="image-item__btn-wrapper">
-                                        <button class='button-81' onClick={() => onImageUpdate(index)}>Update</button>
-                                        <button class='button-81' onClick={() => onImageRemove(index)}>Remove</button>
+                                        <button className ='button-81' onClick={() => onImageUpdate(index)}>Update</button>
+                                        <button className ='button-81' onClick={() => onImageRemove(index)}>Remove</button>
                                         </div>
                                     </div>
                                     ))}

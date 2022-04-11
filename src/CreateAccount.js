@@ -51,12 +51,12 @@ function CreateAccount() {
 			},
 			body: JSON.stringify({
 				firstName,
-                lastName,
+        lastName,
 				email,
 				password,
-                phoneNumber,
-                occupation,
-                description
+        phoneNumber,
+        occupation,
+        description
 			}),
 		})
 

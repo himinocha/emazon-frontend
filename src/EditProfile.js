@@ -8,14 +8,14 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import * as Yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
+import { set, useForm } from 'react-hook-form';
 import HowToRegIcon from '@mui/icons-material/HowToReg';
 import jwtDecode from 'jwt-decode';
 import LogoutIcon from '@mui/icons-material/Logout';
 import Select from 'react-select';
 
 function Profile(){
-    const [email, setEmail] = useState('');
+    const [email, setEmail] = useState()
     const [phoneNumber, setPhoneNumber] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -24,7 +24,7 @@ function Profile(){
     const history = useHistory();
     const token = localStorage.getItem('token');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [occupation, setOccupation] = useState('');
+    const [occupation, setOccupation] = useState('')
 
 
     useEffect(() => {
@@ -37,6 +37,8 @@ function Profile(){
             }
         }
     }, []);
+
+
 
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('Must be a valid email').max(255),
@@ -54,11 +56,31 @@ function Profile(){
     const { register, handleSubmit, formState } = useForm(formOptions);
     const { errors } = formState;
 
-    function onSubmit(data) {
-        // display form data on success
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(data, null, 4));
-        return false;
-    }
+	async function updateUser(event) {
+		event.preventDefault()
+
+		const response = await fetch('https://emazon-backend.herokuapp.com/api/updateUser', {
+			method: 'POST',
+			headers: {
+                Accept: 'application/json',
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				firstName,
+                lastName,
+				email,
+                phoneNumber,
+                description,
+                occupation
+			}),
+		})
+
+		const data = await response.json()
+
+		if (data.status === 'ok') {
+            alert('Update Successful')
+		}
+	}
 
     const logout = () => {
         localStorage.removeItem('token')
@@ -141,7 +163,7 @@ function Profile(){
                         <div className='detail_side'>
                             <h2>Edit Your Information</h2>    
                             <div class = "header-bottom"></div>
-                            <form onSubmit={handleSubmit(onSubmit)}>
+                            <form onSubmit={updateUser}>
                                 <h5>First Name</h5>
                                 <input type='text'
                                  className='inputBox'
@@ -174,8 +196,8 @@ function Profile(){
                                 name = "phoneNumber" 
                                 className='inputBox'
                                 value={phoneNumber} 
-                                defaultValue={user.phone}
-                                placeholder={user.phone}
+                                defaultValue={user.phoneNumber}
+                                placeholder={user.phoneNumber}
                                 onChange={e => setPhoneNumber(e.target.value)} />
                                 <div className="invalid-feedback">{errors.email?.message}</div>
 
@@ -185,6 +207,7 @@ function Profile(){
                                     options={options}
                                     className="selectBox"
                                     classNamePrefix="select"
+                                    placeholder={user.occupation}
                                     onchange={e =>setOccupation(e.value)}
                                 />   
 
@@ -198,11 +221,9 @@ function Profile(){
                                 onChange={e =>setDescription(e.target.value)} />
                                 <div className="invalid-feedback">{errors.email?.message}</div>
 
-                                <Link to ="/Profile">
                                 <button type='submit' className='CreateAccount__signInButton'>
                                     <HowToRegIcon/>
                                 </button>
-                                </Link>
                             </form>
                         </div>
                 </div>
