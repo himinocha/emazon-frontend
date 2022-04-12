@@ -10,6 +10,8 @@ import EditProfile from './EditProfile';
 import Profile from './Profile'
 import ItemUpload from './ItemUpload'
 import SearchResult from './SearchResult'
+import DirectChatPage from './DirectChatPage'
+import { ChatEngine } from 'react-chat-engine';
 
 function App() {
   return (
@@ -58,6 +60,10 @@ function App() {
 
         <Route path="/CreateAccount">
           <CreateAccount/>
+        </Route>
+
+        <Route path="/DirectChatPage">
+          <DirectChatPage/>
         </Route>
 
         <Route path="/">
