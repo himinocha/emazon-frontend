@@ -58,7 +58,11 @@ function ItemDetail(){
                         </div>
 
                         <button>
-                            Add to Basket
+                            Add to Wishlist
+                        </button>
+
+                        <button>
+                            Chat
                         </button>
                     </div>
             </>

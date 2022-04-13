@@ -58,7 +58,7 @@ function Product({ id, title, image, price, rating, specification, detail }) {
 
       <img src={image} alt="" />
 
-      <button onClick = {addToWishList} >Add to Wish list</button>
+      <button onClick = {addToWishList} >Add to Wishlist</button>
     </div>
   );
 }
