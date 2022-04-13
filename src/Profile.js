@@ -54,6 +54,10 @@ function Profile(){
 
     return(
         <div className='profile'>
+            <img className='profile_background'
+            src="https://github.com/yikevding/emazon/blob/main/image/profile_background.jpeg?raw=true"
+            alt="">
+            </img>
             <div className='profile_header'>
                 <div className='profile_image'>
                     <img 
