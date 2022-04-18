@@ -26,12 +26,13 @@
   padding: 5px;
   height: 22px;
   background-color: coral;
+  margin-top:5px;
 }
 .header__searchInput {
-  height: 12px;
-  padding: 10px;
+  height: 25px;
   border: none;
   width: 100%;
+  margin-right:5px;
 }
 .header__option {
   display: flex;
@@ -55,6 +56,7 @@
   display: flex;
   align-items: center;
   color: black;
+  margin-top:5px;
 }
 .header__cartCount {
   margin-left: 10px;
