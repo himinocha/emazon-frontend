@@ -107,9 +107,11 @@ function Profile(){
                         </div>
 
                         <div className='profile_buttons'>
-                            <button className='chat_button'>
-                                <ChatIcon/> Chat
-                            </button>
+                            <Link to ='/DirectChatPage'>
+                                <button className='chat_button'>
+                                    <ChatIcon/> Chat
+                                </button>
+                            </Link>
 
                                 <Link to ='/ItemUpload'>
                                     <button className='sell_button'>

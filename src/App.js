@@ -10,8 +10,13 @@ import EditProfile from './EditProfile';
 import Profile from './Profile'
 import ItemUpload from './ItemUpload'
 import SearchResult from './SearchResult'
+import DirectChatPage from './DirectChatPage'
+import { ChatEngine } from 'react-chat-engine';
+import { useState } from 'react';
 
 function App() {
+
+  const [result, setResult] = useState('r')
   return (
     // BEM
     <div className="app">
@@ -19,7 +24,7 @@ function App() {
       <Switch>
 
         <Route path="/ItemDetail/:title/:price/:rating">
-          <Header/>
+          <Header setResult={setResult}/>
           <ItemDetail/>
         </Route>
 
@@ -28,27 +33,27 @@ function App() {
         </Route>
 
         <Route path="/SearchResult">
-          <Header/>
-          <SearchResult/>
+          <Header setResult={setResult}/>
+          <SearchResult result={result}/>
         </Route>
 
         <Route path="/EditProfile">
-          <Header/>
+          <Header setResult={setResult}/>
           <EditProfile/>
         </Route>
 
         <Route path="/ItemUpload">
-          <Header/>
+          <Header setResult={setResult}/>
           <ItemUpload/>
         </Route>
 
         <Route path="/Profile">
-          <Header/>
+          <Header setResult={setResult}/>
           <Profile/>
         </Route>
 
         <Route path="/wishlist">
-          <Header/>
+          <Header setResult={setResult}/>
           <Wishlist/>
         </Route>
 
@@ -60,8 +65,12 @@ function App() {
           <CreateAccount/>
         </Route>
 
+        <Route path="/DirectChatPage">
+          <DirectChatPage/>
+        </Route>
+
         <Route path="/">
-          <Header/>
+          <Header setResult={setResult}/>
           <Home/>
         </Route>
 
