@@ -5,15 +5,26 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import {Link, useHistory} from "react-router-dom"
 import { useStateValue } from "./StateProvider";
 import jwtDecode from 'jwt-decode';
+import { useLocation } from 'react-router-dom';
+import SearchResults from "./SearchResult"
 
-function Header() {
+function Header({setResult}) {
     const history = useHistory();
     const [{ basket }] = useStateValue();
     const token = localStorage.getItem('token');
     const [user, setUser] = useState([]);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [data, setData] = useState([])
+    const location = useLocation()
+    // const {text} = location.data
 
     console.log(basket);
+
+    function getData(val){
+        setData(val.target.value)
+        setResult(val.target.value)
+        console.warn(val.target.value)
+    }
 
     useEffect(() => {
         if (token) {
@@ -48,7 +59,7 @@ function Header() {
 
         <div className='header__search'>
             <input className='header__searchInput'
-            type="text"/>
+            type="text" onChange={getData}/>
             <Link to='/SearchResult'>
             <SearchIcon className='header__searchIcon'/>
             </Link>

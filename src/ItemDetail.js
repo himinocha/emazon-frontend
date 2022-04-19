@@ -2,6 +2,7 @@ import React from 'react'
 import "./ItemDetail.css"
 import {useParams} from "react-router-dom"
 import { useStateValue } from './StateProvider';
+import { Link } from "react-router-dom";
 
 function ItemDetail(){
 
@@ -61,9 +62,11 @@ function ItemDetail(){
                             Add to Wishlist
                         </button>
 
-                        <button>
-                            Chat
-                        </button>
+                        <Link to ='/DirectChatPage'>
+                            <button>
+                                Chat
+                            </button>
+                        </Link>
                     </div>
             </>
           );
