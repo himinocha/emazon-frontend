@@ -126,6 +126,7 @@ function Profile(){
                     <div className="home__row">
                         {products.map((product, i) => (
                             <Product
+                            id={product._id}
                             title={product.name}
                             price={product.price}
                             rating={product.rating}

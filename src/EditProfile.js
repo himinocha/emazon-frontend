@@ -31,6 +31,12 @@ function Profile(){
         if (token) {
             const u = jwtDecode(token)
             setUser(u)
+            setPhoneNumber(user.phoneNumber)
+            setFirstName(user.firstName)
+            setLastName(user.lastName)
+            setEmail(user.email)
+            setDescription(user.description)
+            setOccupation(user.occupation)
             if (!u) {
                 localStorage.removeItem('token')
                 history.replace('/login')
