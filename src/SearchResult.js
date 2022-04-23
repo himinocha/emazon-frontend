@@ -10,7 +10,7 @@ const {Sider, Content } = Layout;
 function SearchResult({result}){
     const [products, setProducts] = useState([])
     const [priceMin, setPriceMin] = useState(0)
-    const [priceMax, setPriceMax] = useState(9999)
+    const [priceMax, setPriceMax] = useState(99999)
     const [rating, setRating] = useState(6)
 
     

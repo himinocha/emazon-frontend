@@ -20,11 +20,17 @@ function Header({setResult}) {
 
     console.log(basket);
 
+    function setR(){
+        setResult(data)
+    }
+
     function getData(val){
         setData(val.target.value)
-        setResult(val.target.value)
-        console.warn(val.target.value)
+        // setResult(val.target.value)
+        //console.warn(val.target.value)
     }
+
+    
 
     useEffect(() => {
         if (token) {
@@ -60,9 +66,10 @@ function Header({setResult}) {
         <div className='header__search'>
             <input className='header__searchInput'
             type="text" onChange={getData}/>
-            <Link to='/SearchResult'>
+            <Link to='/SearchResult' onClick={setR}>
             <SearchIcon className='header__searchIcon'/>
             </Link>
+
         </div>
 
         <div className='header__nav'>
