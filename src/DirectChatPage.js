@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 
-import { ChatEngine, getOrCreateChat } from 'react-chat-engine'
+import { ChatEngine, getOrCreateChat } from 'react-chat-engine';
 import { Link, useHistory} from "react-router-dom";
 import jwtDecode from 'jwt-decode';
 
