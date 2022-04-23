@@ -1,6 +1,7 @@
 import React from 'react'
 import './WishlistProduct.css';
 import { useStateValue } from './StateProvider';
+import { Link } from "react-router-dom";
 
 function WishlistProduct({title, image, price, rating}) {
     const [{ basket }, dispatch] = useStateValue();
@@ -13,12 +14,30 @@ function WishlistProduct({title, image, price, rating}) {
         })
     }
 
+    const viewCurrentItem= () => {
+        dispatch({
+          type: 'VIEW_PRODUCT_DETAILS',
+          item: {
+            title: title,
+            image: image,
+            price: price,
+            rating: rating
+          }
+        });
+      };
+
   return (
     <div className='wishlistProduct'>
         <img className='wishlistProduct_image' src={image} alt=""/>
 
         <div className='wishlistProduct_info'>
-            <p className='wishlistProduct_title'>{title}</p>
+            {/* <p className='wishlistProduct_title'>{title}</p> */}
+
+            <Link to={`/ItemDetail/${title}/${price}/${rating}`} onClick={viewCurrentItem} style={{ textDecoration: 'none'}}>
+                <p className="wishlistProduct_title">
+                <strong>{title}</strong>
+                </p>
+            </Link>
 
             <p className='wishlistProduct_price'>
                 <small>$</small>
