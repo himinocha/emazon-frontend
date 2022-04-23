@@ -6,9 +6,24 @@ import { Link } from "react-router-dom";
 
 function ItemDetail(){
 
-    let {title, price, rating} = useParams();
+    let {title, image, price, rating} = useParams();
 
     const [{ currentProduct }] = useStateValue();
+
+    const [{ basket }, dispatch] = useStateValue();
+
+    const addToWishList = () => {
+        dispatch({
+          type: 'ADD_TO_WISHLIST',
+          item: {
+            title: currentProduct.title,
+            image: currentProduct.image,
+            price: currentProduct.price,
+            rating: currentProduct.rating
+          }
+        });
+    
+      };
 
     console.log("currentProduct", currentProduct);
     
@@ -58,7 +73,7 @@ function ItemDetail(){
                             Depth: 35"
                         </div>
 
-                        <button>
+                        <button onClick = {addToWishList}>
                             Add to Wishlist
                         </button>
 
