@@ -10,7 +10,7 @@ const {Sider, Content } = Layout;
 function SearchResult({result}){
     const [products, setProducts] = useState([])
     const [priceMin, setPriceMin] = useState(0)
-    const [priceMax, setPriceMax] = useState(9999)
+    const [priceMax, setPriceMax] = useState(99999)
     const [rating, setRating] = useState(6)
 
     
@@ -55,7 +55,7 @@ function SearchResult({result}){
         <div className="container">
             <div className="results-header">
                 <span>Showing Poducts for </span>
-                <span className="category">"{priceMin}"</span>
+                <span className="category">"{result}"</span>
             </div>
 
             <Layout>
@@ -106,7 +106,7 @@ function SearchResult({result}){
                     <br/>
                     <br/>
 
-                    <Button className="button">Apply Filters</Button>
+                    {/* <Button className="button">Apply Filters</Button> */}
                 </div>
                 </Sider>
 
