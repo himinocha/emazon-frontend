@@ -4,7 +4,7 @@ export const getBasketTotal = (basket) =>
 export const initialState = {
     basket: [],
     user: null,
-    currentProduct: {title:null, price:null, rating:null, image:null}
+    currentProduct: {title:null, price:null, rating:null, image:null, userEmail:null}
 };
 
 

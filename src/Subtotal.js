@@ -3,6 +3,7 @@ import './Subtotal.css';
 import CurrencyFormat from 'react-currency-format';
 import { useStateValue } from './StateProvider';
 import { getBasketTotal } from './reducer';
+import { Link } from "react-router-dom";
 
 function Subtotal() {
     const [{ basket }, dispatch] = useStateValue();
@@ -24,7 +25,9 @@ function Subtotal() {
              prefix={"$"}
         />
 
-        <button>Proceed to Chat</button>
+        <Link to ='/DirectChatPage'>
+          <button>Proceed to Chat</button>          
+        </Link>
     </div>
   );
 }

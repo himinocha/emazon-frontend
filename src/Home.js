@@ -55,6 +55,7 @@ function Home() {
                   price={product.price}
                   rating={product.rating}
                   image={product.image}
+                  userEmail={product.userEmail}
                 />
               ))}
             </div>
@@ -66,6 +67,7 @@ function Home() {
                 price={product.price}
                 rating={product.rating}
                 image={product.image}
+                userEmail={product.userEmail}
               />
             </div>
           ) : null}
