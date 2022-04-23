@@ -32,6 +32,24 @@ function Product({ id, title, image, price, rating, specification, detail }) {
   };
 
 
+  async function deleteProduct(event) {
+      event.preventDefault()
+
+      const response = await fetch('https://emazon-backend.herokuapp.com/api/products/delete', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              _id: id
+          }),
+      })
+      const data = await response.json()
+
+      console.log(data);
+      window.location.reload();
+	}
+
  
   return (
     <div className="product">
@@ -53,6 +71,8 @@ function Product({ id, title, image, price, rating, specification, detail }) {
       </div>
 
       <img src={image} alt="" />
+
+      <button onClick = {deleteProduct} >Delete</button>
     </div>
   );
 }
