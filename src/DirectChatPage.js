@@ -1,50 +1,36 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 
 import { ChatEngine, getOrCreateChat } from 'react-chat-engine'
 import { Link, useHistory} from "react-router-dom";
 import jwtDecode from 'jwt-decode';
 
 const DirectChatPage = () => {
-	const [username, setUsername] = useState('')
 	const history = useHistory();
 	const [chatUser, setChatUser] = useState([]);
-	const [user, setUser] = useState([]);
 	const token = localStorage.getItem('token');
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-	// function getOrCreateUser() {
-		// event.preventDefault()
-	useEffect(() => {
+	const [username, setUsername] = useState('')
+	const [user, setUser] = useState([]);
+	
+	useMemo(() => {
 		if (token) {
-            const u = jwtDecode(token)
-            setUser(u)
-            setIsLoggedIn(true);
-            if (!u) {
-                localStorage.removeItem('token')
-                history.replace('/login')
-            } else {
-				const response = fetch("https://api.chatengine.io/users/", {
-					method: 'PUT',
-					headers: {
-						'Content-Type': 'application/json',
-						'PRIVATE-KEY': '2bcabace-e563-4522-8e54-f903d5c88bda',
-					},
-					body: JSON.stringify({
-						"username": u.email,
-						"secret": u.password
-					}),
-				})
-                .then((response) => response.json())
-                .then((responseJson) => {
-                    setChatUser(responseJson);
-                });
-			}
+			const u = jwtDecode(token)
+			setUser(u)
 		}
+	}, []);
 
-	// }
-	}, [token]);
-	console.log(user)
-	console.log(chatUser)
+	useEffect(() => {
+		const response = fetch("https://api.chatengine.io/users/", {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json',
+				'PRIVATE-KEY': '2532a3c0-7140-41dc-b687-6d9f41830372',
+			},
+			body: JSON.stringify({
+				"username": user.email,
+				"secret": '1q2w3e4r'
+			}),
+		})
+	}, []);
 
 	function createDirectChat(creds) {
 		getOrCreateChat(
@@ -58,8 +44,7 @@ const DirectChatPage = () => {
 		return (
 			<div>
 				<input 
-					placeholder='Username' 
-					value={user.email} 
+					placeholder='User Email'
 					onChange={(e) => setUsername(e.target.value)} 
 				/>
 				<button onClick={() => createDirectChat(creds)}>
@@ -68,19 +53,15 @@ const DirectChatPage = () => {
 			</div>
 		)
 	}
-
-	let u = chatUser.username;
-	let s = chatUser.secret;
-	console.log(user.email)
+	
 	return (
 		<ChatEngine
 			height='100vh'
 			userName={user.email}
-			userSecret={user.password}
-			projectID='f1fc6040-cc24-4b82-be07-fe24f8b8888c'
+			userSecret={'1q2w3e4r'}
+			projectID='64852b59-9105-4c2d-a9a9-ffee383a4b81'
 			renderNewChatForm={(creds) => renderChatForm(creds)}
 		/>
 	)
 }
-
 export default DirectChatPage;
