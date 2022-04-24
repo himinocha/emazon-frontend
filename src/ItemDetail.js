@@ -83,14 +83,14 @@ function ItemDetail(){
                                 Email: {currentProduct.userEmail}
                             </div>
     
-                            <button onClick = {addToWishList}>
+                            <button onClick = {addToWishList} id="button1">
                                 Add to Wishlist
                             </button>
     
                             <Link to ='/DirectChatPage'>
-                                <button>
-                                    Chat
-                                </button>
+                                    <button id="button2">
+                                        Chat
+                                    </button>
                             </Link>
                         </div>
                 </>

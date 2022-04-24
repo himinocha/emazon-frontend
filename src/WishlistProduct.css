@@ -1,32 +1,33 @@
 .wishlistProduct {
-    display: flex;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .wishlistProduct_image {
-    object-fit: contain;
-    width: 180px;
-    height: 180px;
+  object-fit: contain;
+  width: 180px;
+  height: 180px;
 }
 
 .wishlistProduct_info {
-    padding-left: 30px;
+  padding-left: 30px;
 }
 
-.wishlistProduct_info>button {
-    background: bisque;
-    border: 1px solid;
-    margin-top: 10px;
-    border-color: darkgoldenrod;
-    color: #111;
+.wishlistProduct_info > button {
+  background: bisque;
+  border: 1px solid;
+  margin-top: 10px;
+  border-color: darkgoldenrod;
+  color: #111;
 }
 
 .wishlistProduct_title {
-    font-size: 17px;
-    font-weight: 800;
+  font-size: 17px;
+  font-weight: 800;
+  color: black;
 }
 
 .wishlistProduct_rating {
-     display: flex;
+  display: flex;
 }

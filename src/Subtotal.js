@@ -25,8 +25,9 @@ function Subtotal() {
              prefix={"$"}
         />
 
+
         <Link to ='/DirectChatPage'>
-          <button>Proceed to Chat</button>          
+          <button id="chat">Proceed to Chat</button>          
         </Link>
     </div>
   );
