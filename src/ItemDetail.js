@@ -69,12 +69,12 @@ function ItemDetail(){
                                 Enter item description here.
                             </div>
     
-                            <div className='item_detail_specification'>
+                            {/* <div className='item_detail_specification'>
                                 <h4>Specification</h4>
                                 Width: 70"<br/>
                                 Height: 30"<br/>
                                 Depth: 35"
-                            </div>
+                            </div> */}
                             
                             <br></br>
     
@@ -128,12 +128,12 @@ function ItemDetail(){
                             Enter item description here.
                         </div>
 
-                        <div className='item_detail_specification'>
+                        {/* <div className='item_detail_specification'>
                             <h4>Specification</h4>
                             Width: 70"<br/>
                             Height: 30"<br/>
                             Depth: 35"
-                        </div>
+                        </div> */}
                         
                         {/* <br></br>
 
