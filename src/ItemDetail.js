@@ -22,7 +22,8 @@ function ItemDetail(){
             image: currentProduct.image,
             price: currentProduct.price,
             rating: currentProduct.rating,
-            userEmail: currentProduct.userEmail
+            userEmail: currentProduct.userEmail,
+            description: currentProduct.description
           }
         });
     
@@ -66,15 +67,15 @@ function ItemDetail(){
     
                             <div className='item_detail_description'>
                                 <h4>Description</h4>
-                                Enter item description here.
+                                {currentProduct.description}
                             </div>
     
-                            <div className='item_detail_specification'>
+                            {/* <div className='item_detail_specification'>
                                 <h4>Specification</h4>
                                 Width: 70"<br/>
                                 Height: 30"<br/>
                                 Depth: 35"
-                            </div>
+                            </div> */}
                             
                             <br></br>
     
@@ -125,15 +126,15 @@ function ItemDetail(){
 
                         <div className='item_detail_description'>
                             <h4>Description</h4>
-                            Enter item description here.
+                            {currentProduct.description}
                         </div>
 
-                        <div className='item_detail_specification'>
+                        {/* <div className='item_detail_specification'>
                             <h4>Specification</h4>
                             Width: 70"<br/>
                             Height: 30"<br/>
                             Depth: 35"
-                        </div>
+                        </div> */}
                         
                         {/* <br></br>
 

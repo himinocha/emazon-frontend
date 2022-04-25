@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { useStateValue } from './StateProvider';
 import { color } from "@mui/system";
 
-function Product({ id, title, image, price, rating, specification, detail, userEmail }) {
+function Product({ id, title, image, price, rating, specification, detail, userEmail, description }) {
 
   const [{ basket }, dispatch] = useStateValue();
 
@@ -16,7 +16,8 @@ function Product({ id, title, image, price, rating, specification, detail, userE
         image: image,
         price: price,
         rating: rating,
-        userEmail: userEmail
+        userEmail: userEmail,
+        description: description
       }
     });
 
@@ -29,7 +30,8 @@ function Product({ id, title, image, price, rating, specification, detail, userE
         image: image,
         price: price,
         rating: rating,
-        userEmail: userEmail
+        userEmail: userEmail,
+        description: description
       }
     });
   };

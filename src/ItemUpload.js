@@ -86,7 +86,8 @@ function ItemUpload(){
 				name: title,
 				rating,
 				price,
-                image
+                image,
+                description
 			}),
 		})
 		const data = await response.json()
