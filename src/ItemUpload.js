@@ -195,13 +195,13 @@ function ItemUpload(){
                             onChange={e =>setRating(e.value)}
                         />                        
 
-                        <h5>Description</h5>
+                        {/* <h5>Description</h5>
                         <input type='text' 
                         name = "Description" 
                         className='description'
                         value={description} 
                         placeholder='Enter a description here...'
-                        onChange={e =>setDescription(e.target.value)} />
+                        onChange={e =>setDescription(e.target.value)} /> */}
 
                         <div className="App">
                             <ImageUploading

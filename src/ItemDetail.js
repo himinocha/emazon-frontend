@@ -64,10 +64,10 @@ function ItemDetail(){
                                 <strong>{currentProduct.price}</strong>
                             </p>
     
-                            <div className='item_detail_description'>
+                            {/* <div className='item_detail_description'>
                                 <h4>Description</h4>
                                 Enter item description here.
-                            </div>
+                            </div> */}
     
                             {/* <div className='item_detail_specification'>
                                 <h4>Specification</h4>
