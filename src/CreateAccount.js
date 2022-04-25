@@ -77,7 +77,7 @@ function CreateAccount() {
             <Link to='/'>
                 <img
                     className="CreateAccount_logo"
-                    src='https://github.com/yikevding/emazon/blob/main/logo.png?raw=true' 
+                    src='https://github.com/yikevding/emazon/blob/main/image/logo.png?raw=true' 
                 />
             </Link>
 
